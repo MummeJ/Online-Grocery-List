@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Grocery List</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <h1>Grocery List</h1>
+  {% if items|length < 1 %}
+  <h4>There are no items in your grocery list. Add one below:</h4>
+  {% else %}
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Added</th>
+      <th>Actions</th>
+    </tr>
+    {% for item in items %}
+      <tr>
+        <td>{{ item.content }}</td>
+        <td>{{ item.date_created.date() }}</td>
+        <td>
+          <a href="/delete/{{ item.id }}">Delete</a>
+          <br>
+          <a href="/update/{{ item.id }}">Update</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  <form action="/" method="POST">
+    <input type="text" name="content" id='content'>
+    <input type="submit" name="" value="Add item">
+  </form>
+</div>
+<p>Logged in user: {{ user.username }}</p>
+<p><a href="/logout">Logout</a></p>
+{% if user.username == "jeremy" %}
+<h4>All Users:</h4>
+<ul>
+  {% for user in users %}
+  <li>{{ user.username }} <a href="/remove_user/{{ user.id }}">Delete User</a> <a href="/view_list/{{ user.id }}">View Grocery List</a></li>
+  {% endfor %}
+{% endif %}
+</ul>
+{% endblock %}

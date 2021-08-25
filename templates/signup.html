@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Grocery List Signup</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <h1>Online Grocery List Signup</h1>
+
+  <form action="" method="POST">
+  {{ form.hidden_tag() }}
+  <p>
+    {{ form.username(size=32,placeholder="Username") }}<br>
+    {% for error in form.username.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>
+    {{ form.email(size=32,placeholder="test@email.com") }}<br>
+    {% for error in form.username.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>
+    {{ form.password(size=32,placeholder="Password") }}<br>
+    {% for error in form.username.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>
+    {{ form.password2(size=32,placeholder="Retype Password") }}<br>
+    {% for error in form.username.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>{{ form.submit }}</p>
+  </form>
+
+</div>
+{% endblock %}

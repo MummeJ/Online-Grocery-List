@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Grocery List Login</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <h1>Welcome to Grocery List Online!<br>Login to continue!</h1>
+
+  <form class='form' action="" method="POST">
+  {{ form.hidden_tag() }}
+  <p>
+    {{ form.username(size=32,placeholder="Username") }}<br>
+    {% for error in form.username.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>
+    {{ form.password(size=32,placeholder="Password") }}<br>
+    {% for error in form.username.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>{{ form.submit }}</p>
+  <span>{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  {% endif %}
+  {% endwith %}</span>
+  <p>Don't have an account?<br>Click <a href="/signup">here</a> to sign up.</p>
+  </form>
+</div>
+{% endblock %}

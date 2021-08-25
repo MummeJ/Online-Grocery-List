@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Grocery List</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <h1>{{ user.username }} Grocery List</h1>
+  {% if items|length < 1 %}
+  <h4>There are no items in your grocery list. Add one below:</h4>
+  {% else %}
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Added</th>
+    </tr>
+    {% for item in items %}
+      <tr>
+        <td>{{ item.content }}</td>
+        <td>{{ item.date_created.date() }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+<p>Logged in user: {{ user.username }}</p>
+<p><a href="/">Back to home</a></p>
+<p><a href="/logout">Logout</a></p>
+{% endblock %}
