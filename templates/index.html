@@ -36,11 +36,13 @@
 </div>
 <p>Logged in user: {{ user.username }}</p>
 <p><a href="/logout">Logout</a></p>
-{% if user.username == "jeremy" %}
+{% if user.username == "admin" %}
 <h4>All Users:</h4>
 <ul>
   {% for user in users %}
-  <li>{{ user.username }} <a href="/remove_user/{{ user.id }}">Delete User</a> <a href="/view_list/{{ user.id }}">View Grocery List</a></li>
+    {% if user.username != "admin" %}
+      <li>{{ user.username }} <a href="/remove_user/{{ user.id }}">Delete User</a> <a href="/view_list/{{ user.id }}">View Grocery List</a></li>
+    {% endif %}
   {% endfor %}
 {% endif %}
 </ul>
