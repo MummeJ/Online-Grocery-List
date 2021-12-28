@@ -15,8 +15,10 @@ This online grocery list keeps track of each user's grocery list which can be mo
       - `user-items.html` - Page where users can view/add/delete grocery list items.
    - `app.py` - File that creates an instance of Flask app.
    - `forms.py` - Contains all the forms.
+   - `requirements.txt` - Application requirements.
+   - `Procfile` - Tells Heroku where the app is.
 
-### ==Executing Program== ###
+### ==Executing Program Locally== ###
 To run, set the following environment variables:
 * Powershell
 	* `$env:FLASK_APP = "app"`
